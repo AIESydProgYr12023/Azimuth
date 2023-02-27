@@ -59,7 +59,7 @@ namespace Azimuth
 				return (VALUE) Convert.ChangeType(instance.strings[_category][_key], valueType);
 			}
 			
-			Console.WriteLine($"[ERROR] Attempted to get config value for type '{valueType}'");
+			Console.WriteLine($"[ERROR] Attempted to get config value for type '{valueType}' with Key '{_key}' in '{_category}'.");
 
 			return default;
 		}

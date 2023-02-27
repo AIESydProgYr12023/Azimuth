@@ -16,7 +16,7 @@ namespace Azimuth
 			Height = Config.Get<int>("Window", "height");
 			Title = Config.Get<string>("Application", "name")!;
 			ClearColor = Config.Get<Color>("Window", "clearColor");
-			QuitKey = (KeyboardKey) Config.Get<int>("Window", "quitKey");
+			QuitKey = (KeyboardKey) Config.Get<int>("Application", "quitKey");
 		}
 
 		public void Open()
