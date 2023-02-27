@@ -8,17 +8,20 @@ namespace Azimuth
 		public int Height { get; }
 		public string Title { get; }
 		public Color ClearColor { get; }
+		public KeyboardKey QuitKey { get; }
 
-		public Window(int _width, int _height, string _title, Color _clearColor)
+		public Window()
 		{
-			Width = _width;
-			Height = _height;
-			Title = _title;
-			ClearColor = _clearColor;
+			Width = Config.Get<int>("Window", "width");
+			Height = Config.Get<int>("Window", "height");
+			Title = Config.Get<string>("Application", "name")!;
+			ClearColor = Config.Get<Color>("Window", "clearColor");
+			QuitKey = (KeyboardKey) Config.Get<int>("Window", "quitKey");
 		}
 
 		public void Open()
 		{
+			Raylib.SetExitKey(QuitKey);
 			Raylib.InitWindow(Width, Height, Title);
 		}
 

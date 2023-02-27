@@ -29,7 +29,7 @@ namespace Azimuth
 		private Application(Game _game)
 		{
 			Config.Create();
-			Window = new Window(Config.Get<int>("Window", "width"), Config.Get<int>("Window", "height"), Config.Get<string>("Application", "name")!, Config.Get<Color>("Window", "clearColor"));
+			Window = new Window();
 			game = _game;
 		}
 
