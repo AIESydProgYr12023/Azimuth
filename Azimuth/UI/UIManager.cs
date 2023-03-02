@@ -22,9 +22,12 @@ namespace Azimuth.UI
 		internal static void Update()
 		{
 			widgets.Sort();
-			
-			foreach(Widget widget in widgets)
+
+			for(int index = 0; index < widgets.Count; index++)
+			{
+				Widget widget = widgets[index];
 				widget.Update(Raylib.GetMousePosition());
+			}
 		}
 
 		internal static void Draw()

@@ -6,6 +6,8 @@ namespace Azimuth.UI
 {
 	public class Button : InteractableWidget
 	{
+		public delegate void OnClickEvent();
+		
 		public class RenderSettings
 		{
 			public static RenderSettings normal = new RenderSettings();
@@ -24,6 +26,8 @@ namespace Azimuth.UI
 			public string? fontId = null;
 			public Color textColor = Color.WHITE;
 		}
+
+		private OnClickEvent? onClick;
 
 		private readonly float roundedness;
 		
@@ -49,6 +53,24 @@ namespace Azimuth.UI
 			textSize = Raylib.MeasureTextEx(font, text, fontSize, fontSpacing) * 0.5f;
 		}
 
+		public void AddListener(OnClickEvent _event)
+		{
+			if(onClick == null)
+			{
+				onClick = _event;
+			}
+			else
+			{
+				onClick += _event;
+			}
+		}
+
+		public void RemoveListener(OnClickEvent _event)
+		{
+			if(onClick != null)
+				onClick -= _event;
+		}
+
 		public override void Draw()
 		{
 			Raylib.DrawRectangleRounded(Bounds, roundedness, 5, ColorFromState());
@@ -60,6 +82,7 @@ namespace Azimuth.UI
 			if(_state != InteractionState.Selected && _oldState == InteractionState.Selected)
 			{
 				// The button is no longer being clicked, so do the event.
+				onClick?.Invoke();
 			}
 		}
 	}
