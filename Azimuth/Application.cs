@@ -1,5 +1,6 @@
 ﻿using Azimuth.GameObjects;
 using Azimuth.GameStates;
+using Azimuth.UI;
 
 using Raylib_cs;
 
@@ -43,15 +44,23 @@ namespace Azimuth
 			while(!Raylib.WindowShouldClose())
 			{
 				float deltaTime = Raylib.GetFrameTime();
+				game.Update(deltaTime);
+				
 				GameObjectManager.Update(deltaTime);
 				GameStateManager.Update(deltaTime);
+				
+				UIManager.Update();
 				
 				Raylib.BeginDrawing();
 				Window.Clear();
 				
+				game.Draw();
+				
 				// Global drawing here
 				GameObjectManager.Draw();
 				GameStateManager.Draw();
+				
+				UIManager.Draw();
 				
 				Raylib.EndDrawing();
 			}
