@@ -30,10 +30,10 @@ namespace Azimuth
 
 		public static void Load()
 		{
-			LoadAllOfType<Texture2D>(textures, "Textures", "png", Raylib.LoadTexture);
-			LoadAllOfType<Image>(images, "Images", "jpg", Raylib.LoadImage);
-			LoadAllOfType<Sound>(sounds, "Sounds", "mp3", Raylib.LoadSound);
-			LoadAllOfType<Font>(fonts, "Fonts", "ttf", Raylib.LoadFont);
+			LoadAllOfType(textures, "Textures", "png", Raylib.LoadTexture);
+			LoadAllOfType(images, "Images", "png", Raylib.LoadImage);
+			LoadAllOfType(sounds, "Sounds", "mp3", Raylib.LoadSound);
+			LoadAllOfType(fonts, "Fonts", "ttf", Raylib.LoadFont);
 		}
 
 		private static void LoadAllOfType<ASSET_TYPE>(Dictionary<string, ASSET_TYPE> _assets, string _folder, string _extension, Func<string, ASSET_TYPE> _loadFnc)
